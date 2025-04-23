@@ -62,6 +62,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.debesh.smartspend.exceptions" />
       <recent name="com.debesh.smartspend.model" />
@@ -120,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745389422177</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dummy commit">
+      <option name="closed" value="true" />
+      <created>1745389468269</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745389468269</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,6 +160,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit, completed customer section" />
     <MESSAGE value="Email service added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Email service added" />
+    <MESSAGE value="dummy commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="dummy commit" />
   </component>
 </project>
