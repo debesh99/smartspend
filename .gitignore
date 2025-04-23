@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Prevent local configurations from being tracked
+/src/main/resources/application-local.properties
