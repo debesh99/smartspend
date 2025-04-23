@@ -36,7 +36,7 @@ public class EmailServiceImpl implements EmailService {
 
             LOGGER.info("Processing: Sending mail from sender: {} to receiver: {}", sender, emailModel.getRecipient());
             javaMailSender.send(message);
-            LOGGER.info("Email sent successfully");
+            LOGGER.info("Email sent successfully ");
         } catch (Exception e) {
             System.out.println("Exception: "+e);
         }
