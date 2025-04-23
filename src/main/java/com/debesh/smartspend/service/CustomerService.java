@@ -1,7 +1,9 @@
 package com.debesh.smartspend.service;
 
-import org.springframework.stereotype.Service;
+import com.debesh.smartspend.exceptions.InvalidCutomerCredentialException;
+import com.debesh.smartspend.model.CustomerInputModel;
+import com.debesh.smartspend.model.CustomerOutputModel;
 
-@Service
-public interface UserService {
+public interface CustomerService {
+    CustomerOutputModel registerCustomer(CustomerInputModel customerInputModel) throws InvalidCutomerCredentialException;
 }
