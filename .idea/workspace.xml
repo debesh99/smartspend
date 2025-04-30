@@ -159,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745392289104</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added various entities">
+      <option name="closed" value="true" />
+      <created>1746005727628</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746005727628</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +199,7 @@
     <MESSAGE value="rectify security flaw" />
     <MESSAGE value="dummy commit" />
     <MESSAGE value="Changes in gitignore to ignore local username and passwords to commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in gitignore to ignore local username and passwords to commit" />
+    <MESSAGE value="Added various entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added various entities" />
   </component>
 </project>
