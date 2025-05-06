@@ -18,6 +18,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -186,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746006259137</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added input and output model for accounts and trasnactions">
+      <option name="closed" value="true" />
+      <created>1746524412203</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746524412204</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,6 +229,7 @@
     <MESSAGE value="Added various entities" />
     <MESSAGE value="dummy commit" />
     <MESSAGE value="Added repositories" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added repositories" />
+    <MESSAGE value="Added input and output model for accounts and trasnactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added input and output model for accounts and trasnactions" />
   </component>
 </project>
