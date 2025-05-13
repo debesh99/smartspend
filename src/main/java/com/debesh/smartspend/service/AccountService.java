@@ -5,19 +5,18 @@ import com.debesh.smartspend.exceptions.UserNotFoundException;
 import com.debesh.smartspend.model.AccountInputModel;
 import com.debesh.smartspend.model.AccountOutputModel;
 
-import javax.security.auth.login.AccountNotFoundException;
 import java.util.List;
 
 public interface AccountService {
     //    CRUD Operations
-    AccountOutputModel create(Long userId, AccountInputModel accountInputModel)throws UserNotFoundException, FIAccountNotFoundException;
+    AccountOutputModel create(Long customerId, AccountInputModel accountInputModel)throws UserNotFoundException;
 
-    AccountOutputModel update( AccountInputModel accountInputModel, Long id) throws FIAccountNotFoundException;
+    AccountOutputModel update( Long customerId, Long accountId, AccountInputModel accountInputModel) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    boolean deleteWallet(Long id) throws FIAccountNotFoundException;
+    boolean deleteWallet(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    AccountOutputModel getWalletById(Long id) throws FIAccountNotFoundException;
+    AccountOutputModel getWalletById(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    List<AccountOutputModel> getAllWallets(Long userId) throws FIAccountNotFoundException;
+    List<AccountOutputModel> getAllWallets(Long customerId) throws  UserNotFoundException;
 
 }

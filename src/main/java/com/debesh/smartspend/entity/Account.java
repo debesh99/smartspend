@@ -22,7 +22,7 @@ public class Account {
 
     //	Current balance should start from 0.0
     @PrePersist
-    public void setCurrentBalance() {
+    public void setBalance() {
         this.currentBalance = 0.0;
     }
 
@@ -48,6 +48,10 @@ public class Account {
 
     public Long getId() {
         return id;
+    }
+
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
     }
 }
 
