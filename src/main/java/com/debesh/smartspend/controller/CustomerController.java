@@ -3,7 +3,6 @@ package com.debesh.smartspend.controller;
 import com.debesh.smartspend.exceptions.InvalidCutomerCredentialException;
 import com.debesh.smartspend.model.CustomerInputModel;
 import com.debesh.smartspend.model.CustomerOutputModel;
-import com.debesh.smartspend.model.EmailModel;
 import com.debesh.smartspend.service.CustomerService;
 import com.debesh.smartspend.service.EmailService;
 import org.slf4j.Logger;

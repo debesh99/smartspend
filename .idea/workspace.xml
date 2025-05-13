@@ -203,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746527052793</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated account service and transaction service implementation classes">
+      <option name="closed" value="true" />
+      <created>1747119139569</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747119139569</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,6 +247,7 @@
     <MESSAGE value="Added repositories" />
     <MESSAGE value="Added input and output model for accounts and trasnactions" />
     <MESSAGE value="Added more exception class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more exception class" />
+    <MESSAGE value="updated account service and transaction service implementation classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated account service and transaction service implementation classes" />
   </component>
 </project>

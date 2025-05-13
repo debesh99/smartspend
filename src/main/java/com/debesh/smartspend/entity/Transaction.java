@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

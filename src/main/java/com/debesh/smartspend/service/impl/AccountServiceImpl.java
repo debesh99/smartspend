@@ -11,10 +11,12 @@ import com.debesh.smartspend.repository.CustomerRepository;
 import com.debesh.smartspend.service.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
@@ -65,7 +67,7 @@ public class AccountServiceImpl implements AccountService {
     public List<AccountOutputModel> getAllWallets(Long customerId) throws UserNotFoundException {
         Customer customer = getCustomer(customerId);
         List<AccountOutputModel> accountOutputModelList = new ArrayList<>();
-        List<Account> accountsList = accountRepository.findAll();
+        List<Account> accountsList = accountRepository.findAllByCustomerId(customerId);
         for(Account account : accountsList){
             AccountOutputModel accountOutputModel = modelMapper.map(account, AccountOutputModel.class);
             accountOutputModelList.add(accountOutputModel);
