@@ -48,15 +48,14 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public boolean deleteWallet(Long customerId, Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
+    public void delete(Long customerId, Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         Customer customer = getCustomer(customerId);
         Account account = getAccount(accountId);
         accountRepository.deleteById(accountId);
-        return false;
     }
 
     @Override
-    public AccountOutputModel getWalletById(Long customerId, Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
+    public AccountOutputModel getAccountById(Long customerId, Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         Customer customer = getCustomer(customerId);
         Account account = getAccount(accountId);
         AccountOutputModel accountOutputModel = modelMapper.map(account, AccountOutputModel.class);
@@ -64,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountOutputModel> getAllWallets(Long customerId) throws UserNotFoundException {
+    public List<AccountOutputModel> getAllAccounts(Long customerId) throws UserNotFoundException {
         Customer customer = getCustomer(customerId);
         List<AccountOutputModel> accountOutputModelList = new ArrayList<>();
         List<Account> accountsList = accountRepository.findAllByCustomerId(customerId);

@@ -13,10 +13,10 @@ public interface AccountService {
 
     AccountOutputModel update( Long customerId, Long accountId, AccountInputModel accountInputModel) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    boolean deleteWallet(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
+    void delete(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    AccountOutputModel getWalletById(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
+    AccountOutputModel getAccountById(Long customerId, Long accountId) throws  UserNotFoundException,FIAccountNotFoundException;
 
-    List<AccountOutputModel> getAllWallets(Long customerId) throws  UserNotFoundException;
+    List<AccountOutputModel> getAllAccounts(Long customerId) throws  UserNotFoundException;
 
 }
