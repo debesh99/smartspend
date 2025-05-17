@@ -32,7 +32,7 @@ public class AccountController {
         return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<AccountOutputModel> updateAccount(@RequestBody AccountInputModel accountInputModel, @RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Updating Account: {}", accountInputModel);
         AccountOutputModel updatedAccount = accountService.update(customerId,accountId,accountInputModel);
@@ -40,7 +40,7 @@ public class AccountController {
         return new ResponseEntity<>(updatedAccount, HttpStatus.CREATED);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> deleteAccount(@RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Deleting Account... ");
         accountService.delete(customerId,accountId);
@@ -48,7 +48,7 @@ public class AccountController {
         return ResponseEntity.ok("Account with id " + accountId + " deleted successfully");
     }
 
-    @PostMapping("/getAll")
+    @GetMapping("/getAll")
     public ResponseEntity<List<AccountOutputModel>> getAll(@RequestBody Long accountId) throws UserNotFoundException {
         LOGGER.info("Getitng all Account with account id: {}", accountId);
         List<AccountOutputModel> accountOutputModels = accountService.getAllAccounts(accountId);
@@ -56,7 +56,7 @@ public class AccountController {
         return new ResponseEntity<>(accountOutputModels, HttpStatus.OK);
     }
 
-    @PostMapping("/getAccount")
+    @GetMapping("/getAccount")
     public ResponseEntity<AccountOutputModel> getAccount(@RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Getting Account by id: {}", accountId);
         AccountOutputModel returnedAccount = accountService.getAccountById(customerId,accountId);
