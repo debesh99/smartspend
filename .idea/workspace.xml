@@ -37,6 +37,9 @@
     &quot;accountId&quot;: &quot;2b4cce6d-c95a-4187-9dd1-6a38af2ce75d&quot;
   }
 }</component>
+  <component name="JvmLoggingSettingsStorage">
+    <option name="loggerId" value="Lombok Slf4j" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -235,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747131590547</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="rectified AccountController class">
+      <option name="closed" value="true" />
+      <created>1747493377858</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747493377858</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,6 +285,7 @@
     <MESSAGE value="updated account service and transaction service implementation classes" />
     <MESSAGE value="updated controller classes" />
     <MESSAGE value="updated AccountController class" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated AccountController class" />
+    <MESSAGE value="rectified AccountController class" />
+    <option name="LAST_COMMIT_MESSAGE" value="rectified AccountController class" />
   </component>
 </project>

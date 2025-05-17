@@ -36,6 +36,14 @@ public class Customer {
         this.firstName = firstName;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -58,5 +66,15 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", id=" + id +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

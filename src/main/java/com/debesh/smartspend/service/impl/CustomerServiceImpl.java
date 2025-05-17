@@ -1,5 +1,6 @@
 package com.debesh.smartspend.service.impl;
 
+import com.debesh.smartspend.controller.CustomerController;
 import com.debesh.smartspend.entity.Customer;
 import com.debesh.smartspend.exceptions.InvalidCutomerCredentialException;
 import com.debesh.smartspend.model.CustomerInputModel;
@@ -9,6 +10,8 @@ import com.debesh.smartspend.repository.CustomerRepository;
 import com.debesh.smartspend.service.CustomerService;
 import com.debesh.smartspend.service.EmailService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +27,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private EmailService emailService;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     @Override
     public CustomerOutputModel registerCustomer(CustomerInputModel customerInputModel) throws InvalidCutomerCredentialException {
         Customer customer = modelMapper.map(customerInputModel, Customer.class);
+        LOGGER.info(customer.toString());
         customerRepository.save(customer);
         CustomerOutputModel customerOutputModel = modelMapper.map(customer, CustomerOutputModel.class);
+        LOGGER.info(customerOutputModel.toString());
 
 //      Send welcome email
         EmailModel emailModel = new EmailModel();

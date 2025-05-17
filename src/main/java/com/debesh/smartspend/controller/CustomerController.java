@@ -27,7 +27,7 @@ public class CustomerController {
 
     @PostMapping("/register")
     public ResponseEntity<CustomerOutputModel> registerCustomer(@RequestBody CustomerInputModel customerInputModel) throws InvalidCutomerCredentialException {
-        LOGGER.info("Registering a new customer: {}", customerInputModel);
+        LOGGER.info("Registering a new customer: {}", customerInputModel.toString());
         CustomerOutputModel registeredCustomer = customerService.registerCustomer(customerInputModel);
         LOGGER.info("customer registered successfully !!!");
         return new ResponseEntity<>(registeredCustomer, HttpStatusCode.valueOf(200));
