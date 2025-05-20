@@ -10,6 +10,8 @@ import com.debesh.smartspend.repository.AccountRepository;
 import com.debesh.smartspend.repository.CustomerRepository;
 import com.debesh.smartspend.service.AccountService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +30,14 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountServiceImpl.class);
+
     @Override
     public AccountOutputModel create(Long customerId, AccountInputModel accountInputModel) throws UserNotFoundException {
         Customer customer = getCustomer(customerId);
         Account account = modelMapper.map(accountInputModel, Account.class);
+        LOGGER.info(accountInputModel.toString());
+        LOGGER.info(account.toString());
         accountRepository.save(account);
         AccountOutputModel accountOutputModel = modelMapper.map(account, AccountOutputModel.class);
         return accountOutputModel;

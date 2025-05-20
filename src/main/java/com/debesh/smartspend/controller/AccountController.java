@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/account")
+@RequestMapping("/customers/{customerId}/accounts")
 public class AccountController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountController.class);
@@ -24,40 +24,40 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/create")
-    public ResponseEntity<AccountOutputModel> createAccount(@RequestBody AccountInputModel accountInputModel, @RequestBody Long customerId) throws UserNotFoundException {
-        LOGGER.info("Creating account: {}", accountInputModel);
+    @PostMapping("create")
+    public ResponseEntity<AccountOutputModel> createAccount(@RequestBody AccountInputModel accountInputModel, @PathVariable Long customerId) throws UserNotFoundException {
+        LOGGER.info("Creating account: {}", accountInputModel.toString());
         AccountOutputModel createdAccount = accountService.create(customerId, accountInputModel);
         LOGGER.info("Account created successfully");
         return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<AccountOutputModel> updateAccount(@RequestBody AccountInputModel accountInputModel, @RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
+    @PutMapping("update/{accountId}")
+    public ResponseEntity<AccountOutputModel> updateAccount(@RequestBody AccountInputModel accountInputModel, @PathVariable Long customerId, @PathVariable Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Updating Account: {}", accountInputModel);
         AccountOutputModel updatedAccount = accountService.update(customerId,accountId,accountInputModel);
         LOGGER.info("Account updated successfully");
         return new ResponseEntity<>(updatedAccount, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteAccount(@RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
+    @DeleteMapping("delete/{accountId}")
+    public ResponseEntity<?> deleteAccount(@PathVariable Long customerId, @PathVariable Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Deleting Account... ");
         accountService.delete(customerId,accountId);
         LOGGER.info("Account with ID {} deleted successfully", accountId);
         return ResponseEntity.ok("Account with id " + accountId + " deleted successfully");
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<List<AccountOutputModel>> getAll(@RequestBody Long accountId) throws UserNotFoundException {
-        LOGGER.info("Getitng all Account with account id: {}", accountId);
-        List<AccountOutputModel> accountOutputModels = accountService.getAllAccounts(accountId);
-        LOGGER.info("Account returned successfully");
+    @GetMapping("/getall")
+    public ResponseEntity<List<AccountOutputModel>> getAll(@PathVariable Long customerId) throws UserNotFoundException {
+        LOGGER.info("Getting all Account with customer id: {}", customerId);
+        List<AccountOutputModel> accountOutputModels = accountService.getAllAccounts(customerId);
+        LOGGER.info("Accounts returned successfully");
         return new ResponseEntity<>(accountOutputModels, HttpStatus.OK);
     }
 
-    @GetMapping("/getAccount")
-    public ResponseEntity<AccountOutputModel> getAccount(@RequestBody Long customerId, @RequestBody Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
+    @GetMapping("/getaccount/{accountId}")
+    public ResponseEntity<AccountOutputModel> getAccount(@PathVariable Long customerId, @PathVariable Long accountId) throws UserNotFoundException, FIAccountNotFoundException {
         LOGGER.info("Getting Account by id: {}", accountId);
         AccountOutputModel returnedAccount = accountService.getAccountById(customerId,accountId);
         LOGGER.info("Account returned successfully");

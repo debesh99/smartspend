@@ -1,8 +1,9 @@
 package com.debesh.smartspend.service.impl;
 
-import com.debesh.smartspend.controller.CustomerController;
+
 import com.debesh.smartspend.entity.Customer;
 import com.debesh.smartspend.exceptions.InvalidCutomerCredentialException;
+import com.debesh.smartspend.exceptions.UserNotFoundException;
 import com.debesh.smartspend.model.CustomerInputModel;
 import com.debesh.smartspend.model.CustomerOutputModel;
 import com.debesh.smartspend.model.EmailModel;
@@ -14,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -53,5 +56,12 @@ public class CustomerServiceImpl implements CustomerService {
         emailService.sendEmail(emailModel);
 
         return  customerOutputModel;
+    }
+
+    @Override
+    public CustomerOutputModel getCustomer(Long customerId) throws UserNotFoundException{
+        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new UserNotFoundException("Customer with " + customerId + " is not present"));
+        CustomerOutputModel customerOutputModel = modelMapper.map(customer,CustomerOutputModel.class);
+        return customerOutputModel;
     }
 }

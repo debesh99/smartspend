@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 public class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String accName;
     private String accNumber;
@@ -50,8 +51,25 @@ public class Account {
         return id;
     }
 
+    public void setId() {
+       this.id = id;
+    }
+
+
     public void setCurrentBalance(double currentBalance) {
         this.currentBalance = currentBalance;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accName='" + accName + '\'' +
+                ", id=" + id +
+                ", accNumber='" + accNumber + '\'' +
+                ", currentBalance=" + currentBalance +
+                ", customer=" + customer +
+                ", transactions=" + transactions +
+                '}';
     }
 }
 

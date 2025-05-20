@@ -1,6 +1,7 @@
 package com.debesh.smartspend.controller;
 
 import com.debesh.smartspend.exceptions.InvalidCutomerCredentialException;
+import com.debesh.smartspend.exceptions.UserNotFoundException;
 import com.debesh.smartspend.model.CustomerInputModel;
 import com.debesh.smartspend.model.CustomerOutputModel;
 import com.debesh.smartspend.service.CustomerService;
@@ -33,4 +34,13 @@ public class CustomerController {
         return new ResponseEntity<>(registeredCustomer, HttpStatusCode.valueOf(200));
     }
 
+    @GetMapping("/get/{customerId}")
+    public ResponseEntity<CustomerOutputModel> getCustomer(@PathVariable Long customerId) {
+        try {
+            CustomerOutputModel customerOutputModel = customerService.getCustomer(customerId);
+            return ResponseEntity.ok(customerOutputModel);
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.notFound().build(); // Return 404 if customer not found
+        }
+    }
 }

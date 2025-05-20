@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Transaction {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
     private String description;

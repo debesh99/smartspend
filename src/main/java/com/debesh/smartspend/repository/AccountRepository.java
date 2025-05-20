@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    @Query("select acc from Account acc join acc.customer c where acc.id=?1")
-    List<Account> findAllByCustomerId(Long CustomerId);
+    @Query("select acc from Account acc where acc.customer.id = ?1")
+    List<Account> findAllByCustomerId(Long customerId);
 
     Optional<Account> findByAccNumber(String accNumber);
 }
