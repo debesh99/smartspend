@@ -2,6 +2,7 @@ package com.debesh.smartspend.entity;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
@@ -10,8 +11,8 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String accName;
-    private String accNumber;
+    private String accountName;
+    private String accountNumber;
     private double currentBalance;
 
     @ManyToOne
@@ -27,20 +28,20 @@ public class Account {
         this.currentBalance = 0.0;
     }
 
-    public String getAccName() {
-        return accName;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setAccName(String accName) {
-        this.accName = accName;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
-    public String getAccNumber() {
-        return accNumber;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccNumber(String accNumber) {
-        this.accNumber = accNumber;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public double getCurrentBalance() {
@@ -51,21 +52,28 @@ public class Account {
         return id;
     }
 
-    public void setId() {
-       this.id = id;
+    public void setId(long id) {
+        this.id = id;
     }
-
 
     public void setCurrentBalance(double currentBalance) {
         this.currentBalance = currentBalance;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
-                "accName='" + accName + '\'' +
+                "accName='" + accountName + '\'' +
                 ", id=" + id +
-                ", accNumber='" + accNumber + '\'' +
+                ", accNumber='" + accountNumber + '\'' +
                 ", currentBalance=" + currentBalance +
                 ", customer=" + customer +
                 ", transactions=" + transactions +

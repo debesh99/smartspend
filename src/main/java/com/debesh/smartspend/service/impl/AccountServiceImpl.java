@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,21 +34,24 @@ public class AccountServiceImpl implements AccountService {
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     @Override
+    @Transactional
     public AccountOutputModel create(Long customerId, AccountInputModel accountInputModel) throws UserNotFoundException {
         Customer customer = getCustomer(customerId);
         Account account = modelMapper.map(accountInputModel, Account.class);
-        LOGGER.info(accountInputModel.toString());
-        LOGGER.info(account.toString());
+        account.setCustomer(customer);
         accountRepository.save(account);
         AccountOutputModel accountOutputModel = modelMapper.map(account, AccountOutputModel.class);
+        LOGGER.info(accountOutputModel.toString());
         return accountOutputModel;
     }
 
     @Override
     public AccountOutputModel update(Long customerId, Long accountId, AccountInputModel accountInputModel) throws UserNotFoundException, FIAccountNotFoundException {
+        LOGGER.info(accountInputModel.toString());
         Customer customer = getCustomer(customerId);
         Account account = getAccount(accountId);
         account = modelMapper.map(accountInputModel, Account.class);
+        account.setCustomer(customer);
         accountRepository.save(account);
         AccountOutputModel accountOutputModel = modelMapper.map(account, AccountOutputModel.class);
         return accountOutputModel;

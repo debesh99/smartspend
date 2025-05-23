@@ -72,4 +72,16 @@ public class Transaction {
     public void setType(int type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "account=" + account +
+                ", id=" + id +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", transactionDate=" + transactionDate +
+                '}';
+    }
 }

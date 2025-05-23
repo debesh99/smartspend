@@ -13,5 +13,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query("select acc from Account acc where acc.customer.id = ?1")
     List<Account> findAllByCustomerId(Long customerId);
 
-    Optional<Account> findByAccNumber(String accNumber);
+    Optional<Account> findByAccountNumber(String accNumber);
 }

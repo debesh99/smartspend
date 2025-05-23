@@ -1,5 +1,6 @@
 package com.debesh.smartspend.service.impl;
 
+import com.debesh.smartspend.controller.TransactionController;
 import com.debesh.smartspend.entity.Account;
 import com.debesh.smartspend.entity.Transaction;
 import com.debesh.smartspend.exceptions.FIAccountNotFoundException;
@@ -10,6 +11,8 @@ import com.debesh.smartspend.repository.AccountRepository;
 import com.debesh.smartspend.repository.TransactionRepository;
 import com.debesh.smartspend.service.TransactionService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +31,13 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
+
     @Override
     public TransactionOutputModel create(Long accountId, TransactionInputModel transactionInputModel) throws FIAccountNotFoundException {
         Account account = getAccount(accountId);
         Transaction transaction = modelMapper.map(transactionInputModel, Transaction.class);
+        LOGGER.info(transaction.toString());
         transactionRepository.save(transaction);
         TransactionOutputModel transactionOutputModel = modelMapper.map(transaction, TransactionOutputModel.class);
         if(transactionOutputModel.getType()==1){
