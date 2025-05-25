@@ -37,6 +37,7 @@ public class TransactionServiceImpl implements TransactionService {
     public TransactionOutputModel create(Long accountId, TransactionInputModel transactionInputModel) throws FIAccountNotFoundException {
         Account account = getAccount(accountId);
         Transaction transaction = modelMapper.map(transactionInputModel, Transaction.class);
+        transaction.setAccount(account);
         LOGGER.info(transaction.toString());
         transactionRepository.save(transaction);
         TransactionOutputModel transactionOutputModel = modelMapper.map(transaction, TransactionOutputModel.class);
@@ -45,6 +46,7 @@ public class TransactionServiceImpl implements TransactionService {
         }else if(transactionOutputModel.getType()==2){
             account.setCurrentBalance(account.getCurrentBalance()-transactionOutputModel.getAmount());
         }
+        LOGGER.info(transactionOutputModel.toString());
         return transactionOutputModel;
     }
 
