@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/accounts/{accountId}/transactions")
 @CrossOrigin
@@ -29,5 +31,11 @@ public class TransactionController {
         TransactionOutputModel transactionSaved = transactionService.create(accountId, transactionInputModel);
         LOGGER.info("Transaction created: {}", transactionSaved);
         return new ResponseEntity<>(transactionSaved, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAll(@PathVariable Long accountId) throws FIAccountNotFoundException{
+        List<TransactionOutputModel> transactionOutputModels = transactionService.getAll(accountId);
+        return new ResponseEntity<>(transactionOutputModels, HttpStatus.OK);
     }
 }

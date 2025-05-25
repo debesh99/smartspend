@@ -46,7 +46,8 @@ public class TransactionServiceImpl implements TransactionService {
         }else if(transactionOutputModel.getType()==2){
             account.setCurrentBalance(account.getCurrentBalance()-transactionOutputModel.getAmount());
         }
-        LOGGER.info(transactionOutputModel.toString());
+        accountRepository.save(account);
+        LOGGER.info(transaction.toString());
         return transactionOutputModel;
     }
 
